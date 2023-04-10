@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tema2/showDialogFunction.dart';
+import 'show_dialog_function.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,22 +32,30 @@ class _MyHomePageState extends State<MyHomePage> {
   String? _response;
 
   bool _checkCube(int number) {
-    if (number == 0) return true;
+    if (number == 0) {
+      return true;
+    }
     int i = 1;
     while (i * i * i < number) {
       i++;
     }
-    if (i * i * i == number) return true;
+    if (i * i * i == number) {
+      return true;
+    }
     return false;
   }
 
   bool _checkSquare(int number) {
-    if (number == 0) return true;
+    if (number == 0) {
+      return true;
+    }
     int i = 1;
     while (i * i < number) {
       i++;
     }
-    if (i * i == number) return true;
+    if (i * i == number) {
+      return true;
+    }
     return false;
   }
 
@@ -104,19 +112,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     setState(() {
                       if (_numberChoice != null) {
                         _controller.clear();
-                        final bool isPerfectSquare =
-                        _checkSquare(_numberChoice!);
+                        final bool isPerfectSquare = _checkSquare(_numberChoice!);
                         final bool isPerfectCube = _checkCube(_numberChoice!);
                         if (isPerfectSquare == true && isPerfectCube == true) {
-                          _response =
-                              'Your number is a perfect square and a perfect cube';
+                          _response = 'Your number is a perfect square and a perfect cube';
                         } else if (isPerfectSquare == true) {
                           _response = 'Your number is a perfect square';
                         } else if (isPerfectCube == true) {
                           _response = 'Your number is a perfect cube';
                         } else {
-                          _response =
-                              'Your number is not a perfect square, nor a perfect cube';
+                          _response = 'Your number is not a perfect square, nor a perfect cube';
                         }
                         showDialogDart(context, _response!);
                         _response = null;
